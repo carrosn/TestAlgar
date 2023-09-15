@@ -1,0 +1,53 @@
+<a  routerLink="/" (click)="hiddeData()">Salir</a>
+
+<div class="container">
+<div class="text-center">
+<H1>Gestionar Productos</H1>
+</div>
+<button class="btn btn-primary float-right" routerLink="/inicio">Agregar</button>
+
+
+<div class="text-center">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Título</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        
+        <th scope="col">SubTotal</th>
+         <th scope="col">#</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conv of lista">
+        <th scope="row">{{conv.codigo}}</th>
+        <td>{{conv.titulo}}</td>
+        <td>{{conv.descripcion}}</td>
+        <td>{{conv.cantidadAp}}</td>
+        <td>{{conv.precio}}</td>
+        
+        <th>{{ conv.precio * conv.cantidadAp | currency}}</th>
+        
+        <td>
+        <button class="btn btn-danger" [routerLink]="['/modificar',conv.codigo]">Editar</button>
+        <button class="btn btn-warning" (click)="eliminarProductos(conv.codigo)">Eliminar</button>
+      </td>
+
+      </tr>
+      <tr>
+        <td>Total:</td>
+        <td>{{ totalProductos | currency }}</td>
+      </tr>
+      </tbody>
+  </table>
+
+  
+</div>
+
+
+<!-- <button class="btn btn-primary float-right" routerLink="/agregar">Agregar</button> -->
+</div>

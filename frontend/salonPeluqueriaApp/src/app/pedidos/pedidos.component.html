@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="text-center">
+    <H1>Productos</H1>
+    </div>
+   
+
+    
+
+
+    <div class="text-center">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+                
+               
+                 <th scope="col">#</th>
+        
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let conv of lista">
+                <th scope="row">{{conv.codigo}}</th>
+                <td>{{conv.titulo}}</td>
+                <td>{{conv.descripcion}}</td>
+                 <td>{{conv.precio}}</td>
+                
+              
+                
+                <td>
+                <button class="btn btn-primary" (click)="agregarProducto(conv.codigo)" >Agregar</button>
+               
+              </td>
+        
+              </tr>
+              
+              </tbody>
+          </table>
+        
+          
+        </div>
+        <div class="text-center">
+            <H1>Pedidos</H1>
+            </div>
+        <div class="text-center">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Cantidad</th>
+                    
+            
+                    
+            
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let conv of listaPedido">
+                      <th scope="row">{{conv.codigo}}</th>
+                      <td>{{conv.titulo}}</td>
+                      <td><input  type="number" id="{{conv.codigo}}"  (change)="onChangeEvent($event,conv.codigo)" placeholder="Cantidad"  min="1" class="form-control is-valid"  placeholder="Cantidad"  required></td>
+                      <td>{{conv.precio}}</td>
+                      <td>{{ cantidad * conv.precio | currency}}
+                      
+                    
+                      
+                      <td>
+                      <button class="btn btn-danger"  (click)="quitarProducto(conv.codigo)" >Quitar</button>
+                     
+                    </td>
+              
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total:</td>
+                        <td>
+                          {{ totalPedido | currency}}
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            
+                
+            </div>
+            <button class="btn btn-primary float-right" (click)="datosEntrega()">Finalizar Pedido</button>
+
+            
+          <div class="container" *ngIf="mostrarDatos">
+                <div class="text-center">
+                <H1>Guardar Pedido</H1>
+                </div>
+                <form class="was-validated" action="">
+                        
+                    <div class="col-md-4 mb-3">
+                        <label for="cedula">* No Documento</label>
+                        <input type="text" class="form-control is-valid" id="cedula" [(ngModel)]="cedula"  *ngIf="mostrarDatos" name="cedula" placeholder="No. Cédula"  required>
+                        
+                      </div>
+                      <div class="mb-3">
+                        <label for="direccion">* Dirección de Entrega</label>
+                        <textarea class="form-control is-invalid" id="direccion" [(ngModel)]="direccion"  name="direccion" placeholder="Dirección"  *ngIf="mostrarDatos" required></textarea>
+                        
+                      </div>
+                </form>
+                <button class="btn btn-primary float-right" (click)="guardarPedido()">Guardar</button>
+            </div>  
+            
+</div>

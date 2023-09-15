@@ -1,0 +1,56 @@
+
+
+<a  routerLink="/" (click)="regresar()">Volver</a>
+
+<div class="container">
+<div class="text-center">
+<H1>Editar Producto</H1>
+</div>
+<form class="was-validated" action="">
+        
+    <div class="col-md-4 mb-3">
+        <label for="codigo">* Código de Producto</label>
+        <input type="text" class="form-control is-valid" id="codigo" [(ngModel)]="productoAct.codigo"  name="codigo" placeholder="Código de producto"  required>
+        
+      </div>
+      <div class="mb-3">
+        <label for="titulo">* Título</label>
+        <textarea class="form-control is-invalid" id="titulo" name="titulo" placeholder="Título" [(ngModel)]="productoAct.titulo" required></textarea>
+        
+      </div>
+    
+    <div class="mb-3">
+          <label for="descripcion">* Descripción</label>
+          <textarea class="form-control is-invalid" id="descripcion" placeholder="Descripción" [(ngModel)]="productoAct.descripcion" name="descripcion"required></textarea>
+          
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="estado" >* Estado</label>
+            <select class="form-control" [(ngModel)]="productoAct.estado" name="estado">
+                <option selected>Seleccione...</option>
+                <option value="Activo">Activo</option>
+                <option value="No Activo">No Activo</option>
+                
+              </select>
+          
+          </div> 
+        
+      <div class="col-md-4 mb-3">
+        <label for="cantidadAp" >* Cantidad</label>
+        <input matInput type="number" placeholder="Cantidad"  min="1" class="form-control is-valid" [(ngModel)]="productoAct.cantidadAp" id="cantidadAp" name="cantidadAp" placeholder="Cantidad"  required>
+        <!-- <input type="text" class="form-control is-valid" id="cantidadAp" [(ngModel)]="productoAct.cantidadAp"  name="cantidadAp" placeholder="Cantidad"  required> -->
+        
+      </div> 
+
+      <div class="col-md-4 mb-3">
+        <label for="precio" >* Precio</label>
+        <input  type="number" placeholder="Precio"  min="1" class="form-control is-valid" [(ngModel)]="productoAct.precio" id="precio" name="precio" placeholder="Precio"  required>
+        <!-- <input type="text" class="form-control is-valid" id="cantidadAp" [(ngModel)]="productoAct.cantidadAp"  name="cantidadAp" placeholder="Cantidad"  required> -->
+        
+      </div> 
+</form>
+<button type="submit" class="btn btn-primary" (click)="modificar()">Guardar</button>
+
+</div>
+

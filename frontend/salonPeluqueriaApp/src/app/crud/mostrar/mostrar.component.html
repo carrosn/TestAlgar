@@ -1,0 +1,50 @@
+
+<div class="container">
+    <div class="text-center">
+    <H1>Gestionar Productos</H1>
+    </div>
+    <!-- <button class="btn btn-primary float-right" routerLink="/agregar">Agregar</button>
+     -->
+    <button mat-button (click)="openTempDialog()" class="btn btn-primary float-right" >Open Temp Modal</button>
+
+<ng-template #dialogRef let-mydata>
+    <div class="text-center">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                
+               
+                 <th scope="col">#</th>
+        
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let conv of lista">
+                <th scope="row">{{conv.codigo}}</th>
+                <td>{{conv.titulo}}</td>
+                <td>{{conv.descripcion}}</td>
+                <td><input matInput type="number" placeholder="Cantidad"  min="1" class="form-control is-valid"  id="cantidadAp" name="cantidadAp" placeholder="Cantidad"  required></td>
+                <td>{{conv.precio}}</td>
+                
+              
+                
+                <td>
+                <button class="btn btn-primary" [routerLink]="['/modificar',conv.codigo]">Agregar</button>
+               
+              </td>
+        
+              </tr>
+              
+              </tbody>
+          </table>
+        
+          
+        </div>
+  <button mat-button mat-dialog-close="cerrar "class="btn btn-primary float-right"  >Cerrar</button>
+</ng-template>
+</div>
